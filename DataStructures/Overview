@@ -1,0 +1,27 @@
+List  [1,2,3]
+- General Purpose
+- Most widely used data structure
+- Grow and shrink as needed
+- Sequence type
+- Sortable
+
+
+
+Set {1,2,3}
+- Store non-duplicate items
+- Very fast compared to lists
+- Math set operations (union, intersect)
+- Unordered
+
+
+Tuple (R,)
+- Immutable
+- Useful for fixed data
+- Faster than lists
+- Sequence type
+
+
+Dictionary {}
+- Key/Value pairs
+- Hashmap
+- Unordered

@@ -7,10 +7,37 @@
 
 # [start:end+1:step]
 
-x = 'computer'
+x = [2, 5, 8, 12, 12]
 
-print(x[1:4])  # returns 1st to 3rd, based on index
-print(x[1:6:2])  # returns 1st to 5th, gives every other item
-print(x[3:])  # returns from 3rd to no end
-print(x[:5])  # returns items 0 to 4
-print(x[-1])  # returns last item
+print(sum(x[-2:]))  # sums last 2 items
+
+# sorted returns a new list without changing original
+
+print(x.count(12))  # returns count of the number 12
+
+print(x.index(8))  # returns the index number of an item
+
+my_list = [i for i in range(11)]
+print(my_list)
+
+squares = [i ** 2 for i in range(10) if i > 4]
+
+print(squares)
+
+#######################################################
+
+a = [3, 2, 1]
+b = [4, 5]
+
+a.extend(b)
+print(a)
+
+a.pop()  # pops last element
+print(a)
+
+a.remove(3)  # removes the number 3
+print(a)
+
+a.sort()  # this is an INPLACE sort, unlilke sorted() function
+
+print(a)

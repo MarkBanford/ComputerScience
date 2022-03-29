@@ -1,0 +1,15 @@
+Threading
+- A new thread is spawned within the existing process
+- Starting a thread is faster than starting a process
+- Memory is shared between threads
+- Mutexes often needed to control access to shared data
+- One Global Interpreter Lock (GIL) for all threads
+
+
+
+Multiprocessing
+- A new process is started independent from the first process
+- Starting a new process is slower than starting a new thread
+- Memory is not shared between processes
+- Mutexes not needed to control access to shared data
+- One GIL for each process

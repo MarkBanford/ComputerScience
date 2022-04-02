@@ -35,3 +35,7 @@ for obj in objs:
 print(z1.colour)
 print(z2.doors)
 print(z3.colour)
+
+# lets say we do not have an attribute that already exists. We can use getattr and pass in an error msg
+
+print(getattr(z1, "wingspan", "Attribute does not exist"))

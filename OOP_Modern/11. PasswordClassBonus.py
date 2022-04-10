@@ -1,5 +1,6 @@
 import string
 from random import choices
+from copy import copy
 
 
 class Password:
@@ -44,7 +45,7 @@ class Password:
 
         return cls.INPUT_UNIVERSE
 
-    def __init__(self, strength="mid", length=12):
+    def __init__(self, strength="mid", length=None):
         self.strength = strength
         self.length = length
 
@@ -57,7 +58,7 @@ class Password:
         :rtype str
         """
 
-        population = self.INPUT_UNIVERSE["letters"]
+        population = copy(self.INPUT_UNIVERSE["letters"])
         length = self.length or self.DEFAULT_LENGTHS.get(self.strength)
 
         if self.strength == "high":
@@ -75,3 +76,5 @@ if __name__ == "__main__":
     print("mid password " + mid.password)
     high = Password(strength="high", length=40)
     print("high password " + high.password)
+    default = Password()
+    print(f"default password is {default.password}")

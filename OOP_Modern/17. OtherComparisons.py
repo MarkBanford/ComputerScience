@@ -1,3 +1,6 @@
+'''ie b1>b2 is not defined yet'''
+
+
 class Book:
     def __init__(self, title, author, book_type, pages):
         self.title = title
@@ -21,11 +24,28 @@ class Book:
     def __hash__(self):
         return hash((self.title, self.author))
 
+    def __gt__(self, other):  # greater than
+        if not isinstance(other, Book):
+            return NotImplemented
+        return self.pages > other.pages
 
-b1 = Book("Cars for beginners", "Nassim", "Hardcover", 519)
-print(hash(b1))
-b2 = Book("Cars for beginners1", "Nassim1", "Hardcover1", 519)
-print(hash(b2))
-b3 = Book("Cars for beginners", "Nassim", "Hardcover", 519)
-print(hash(b3))
-print(hash(b3) == hash(b1))
+    def __lt__(self, other):
+        if not isinstance(other, Book):
+            return NotImplemented
+        return self.pages < other.pages
+
+    def __le__(self, other):
+        if not isinstance(other, Book):
+            return NotImplemented
+        return self.pages <= other.pages
+
+    def __ge__(self, other):
+        if not isinstance(other, Book):
+            return NotImplemented
+        return self.pages >= other.pages
+
+
+b1 = Book("Cars for beginners", "Nassim", "Hardcover", 520)
+b2 = Book("Cars for beginners", "Nassim", "Hardcover", 519)
+
+print(b1 >= b2)

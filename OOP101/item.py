@@ -22,11 +22,20 @@ class Item:
 
     @property  # getter - ensures you cannot change name after creation
     def name(self):
+        print("getter of name called")
         return self.__name
 
     @name.setter  # settr -if we want to set the name
     def name(self, new_name):
+        if len(new_name) > 10:
+            raise Exception("Name is too long")
+        print("setter of name called")
         self.__name = new_name
+
+    @name.deleter
+    def name(self):
+        print("Deleter called")
+        del self.__name
 
     def calculate_total_price(self):
         return self.price * self.quantity

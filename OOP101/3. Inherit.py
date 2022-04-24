@@ -1,6 +1,8 @@
 import csv
 
 
+# Dealing with Broken phones for example
+
 class Item:
     pay_rate = 0.8
     all = []  # Stored instances
@@ -48,7 +50,21 @@ class Item:
             return False
 
     def __repr__(self):
-        return f"Item('{self.name}', {self.price},{self.quantity})"  # Best Practise
+        return f"{self.__class__.__name__}Item('{self.name}', {self.price},{self.quantity})"  # Best Practise
 
 
-print(Item.is_integer(7.0))
+class Phone(Item):
+
+    def __init__(self, name: str, price: float, quantity=0, broken_phones=0):
+        # Call to parent for attributes
+        super().__init__(name, price, quantity)
+
+        assert broken_phones >= 0, f"Quantity {broken_phones} is not greater than 0"
+
+        # Assign to self object
+        self.broken_phones = broken_phones
+
+
+phone1 = Phone("JCV10", 500, 5, 1)
+print(Item.all)
+print(Phone.all)

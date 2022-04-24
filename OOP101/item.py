@@ -1,6 +1,8 @@
 import csv
 
 
+# Dealing with Broken phones for example
+
 class Item:
     pay_rate = 0.8
     all = []  # Stored instances
@@ -12,11 +14,19 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than 0"
 
         # Assign to self object
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
         Item.all.append(self)  # add each instance created to the class list
+
+    @property  # getter - ensures you cannot change name after creation
+    def name(self):
+        return self.__name
+
+    @name.setter  # settr -if we want to set the name
+    def name(self, new_name):
+        self.__name = new_name
 
     def calculate_total_price(self):
         return self.price * self.quantity
@@ -48,7 +58,4 @@ class Item:
             return False
 
     def __repr__(self):
-        return f"Item('{self.name}', {self.price},{self.quantity})"  # Best Practise
-
-
-print(Item.is_integer(7.0))
+        return f"{self.__class__.__name__}Item('{self.name}', {self.price},{self.quantity})"  # Best Practise

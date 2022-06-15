@@ -33,7 +33,7 @@ class RNAVirus(Virus):
     genome = "ribonucleic"
 
     def reproduce(self):
-        success, status = Virus.reproduce(self)
+        success, status = super().reproduce()
 
         if success:
             print(f"{self.name} just replicated in the {self.host} host")
@@ -43,7 +43,7 @@ class DNAVirus(Virus):
     genome = "deoxy"
 
     def reproduce(self):
-        success, status = Virus.reproduce(self)
+        success, status = super().reproduce()
 
         if success:
             print(f"{self.name} just replicated in the {self.host} host")
@@ -54,12 +54,13 @@ class Coronavirus(RNAVirus):
 
 
 class SARSCov2(Coronavirus):
+    def __init__(self, variant):
+        super().__init__("SARSCov2", 2.49, 1.3)
+        self.variant = variant
+
     def mutate(self):
         print(f"The {self.name} virus just mutated")
 
 
-cv = SARSCov2("Original", 2.9, 1.2)
-cv.infect("Toby")
-
-for _ in range(4):
-    print(cv.reproduce(), "\n")
+cv = SARSCov2("Omicron")
+print(cv.name)
